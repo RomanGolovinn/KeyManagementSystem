@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package kms.v1;
+
+option go_package = "github.com/RomanGolovinn/KeyManagementSystem/internal/api/kms/v1;kmsv1";
+
+import "google/protobuf/timestamp.proto";
+
+service KMSService {
+  rpc RegisterClient(RegisterClientRequest) returns (RegisterClientResponse);
+  rpc GetSecret(GetSecretRequest) returns (GetSecretResponse);
+}
+
+message RegisterClientRequest {
+  string name = 1;
+  string tls_cert = 2;
+}
+
+message RegisterClientResponse {
+  string client_id = 1;
+  google.protobuf.Timestamp valid_to = 2;
+}
+
+message GetSecretRequest {
+  string client_id = 1;
+  string server_id = 2;
+}
+
+message GetSecretResponse {
+  string payload = 1;
+}
