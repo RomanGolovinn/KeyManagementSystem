@@ -41,3 +41,19 @@ func (p *Postgres) GetPermissions(ctx context.Context, client, server string) (i
 	return permission, nil
 
 }
+
+func (p *Postgres) CreateClient(ctx context.Context, client Client) (string, error) {
+	q := `insert into clients (name, tls_pem, valid_to) values ($1, $2, $3)
+		returning id`
+
+	var id string
+
+	err := p.DB.QueryRowContext(ctx, q, client.Name, client.TlsPem,
+		client.ValidTo).Scan(&id)
+
+	if err != nil {
+		return "", fmt.Errorf("Failed to create client in db: %w", err)
+	}
+
+	return id, nil
+}
