@@ -3,10 +3,10 @@ package postgres
 import "time"
 
 type Client struct {
-	Id       string
-	Name     string
-	Tls_pem  string
-	Valid_to time.Time
+	Id      string
+	Name    string
+	TlsPem  string
+	ValidTo time.Time
 }
 
 type Server struct {
@@ -16,6 +16,6 @@ type Server struct {
 }
 
 type Permission struct {
-	Client_id string
-	Server_id string
+	ClientId string
+	ServerId string
 }
