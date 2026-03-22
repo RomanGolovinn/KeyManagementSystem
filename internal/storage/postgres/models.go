@@ -16,6 +16,7 @@ type Server struct {
 }
 
 type Permission struct {
-	ClientId string
-	ServerId string
+	ClientId   string
+	ServerId   string
+	Permission int
 }
