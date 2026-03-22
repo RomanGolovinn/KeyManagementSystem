@@ -57,3 +57,28 @@ func (p *Postgres) CreateClient(ctx context.Context, client Client) (string, err
 
 	return id, nil
 }
+
+func (p *Postgres) CreateServer(ctx context.Context, server Server) (string, error) {
+	q := `insert into servers (name, address) values ($1, $2)
+		returning id`
+
+	var id string
+
+	err := p.DB.QueryRowContext(ctx, q, server.Name, server.Address).Scan(&id)
+	if err != nil {
+		return "", fmt.Errorf("Failed to create server in db: %w", err)
+	}
+
+	return id, nil
+}
+
+func (p *Postgres) CreatePermission(ctx context.Context, permission Permission) error {
+	q := `insert into permission (client_id, server_id, permission) values ($1, $2, $3)`
+
+	_, err := p.DB.ExecContext(ctx, q, permission.ClientId, permission.ServerId,
+		permission.Permission)
+	if err != nil {
+		return fmt.Errorf("Failed to create permission in db: %w", err)
+	}
+	return nil
+}
