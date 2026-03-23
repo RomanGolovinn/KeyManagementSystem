@@ -1,11 +1,11 @@
-create table client (
+create table clients (
     id uuid primary key default gen_random_uuid(),
     name varchar(100),
     tls_pem Text not null,
     valid_to timestamp with time zone default now() + interval '1 day'
 );
 
-create table server (
+create table servers(
     id uuid primary key default gen_random_uuid(),
     name varchar(100),
     address varchar(50) -- ip:port or domain:port
@@ -13,8 +13,8 @@ create table server (
 
 create table permissions (
     id serial primary key,
-    client_id uuid references client(id) on delete cascade,
+    client_id uuid references clients(id) on delete cascade,
     server_id uuid references server(id) on delete cascade,
     permission integer default 0,
     unique (client_id, server_id)
-)
+);
