@@ -33,7 +33,7 @@ func main() {
 	defer psql.DB.Close()
 	log.Println("Successfully connected to the database!")
 
-	kmsServer := service.NewKMSService(psql)
+	kmsServer := service.NewKMSServer(psql)
 
 	grpcServer := grpc.NewServer()
 	pb.RegisterKMSServiceServer(grpcServer, kmsServer)
