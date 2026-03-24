@@ -126,6 +126,206 @@ func (x *RegisterClientResponse) GetValidTo() *timestamppb.Timestamp {
 	return nil
 }
 
+type RegisterServerRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Address       string                 `protobuf:"bytes,2,opt,name=address,proto3" json:"address,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RegisterServerRequest) Reset() {
+	*x = RegisterServerRequest{}
+	mi := &file_api_proto_kms_v1_kms_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RegisterServerRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RegisterServerRequest) ProtoMessage() {}
+
+func (x *RegisterServerRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_api_proto_kms_v1_kms_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RegisterServerRequest.ProtoReflect.Descriptor instead.
+func (*RegisterServerRequest) Descriptor() ([]byte, []int) {
+	return file_api_proto_kms_v1_kms_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *RegisterServerRequest) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *RegisterServerRequest) GetAddress() string {
+	if x != nil {
+		return x.Address
+	}
+	return ""
+}
+
+type RegisterServerResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ServerId      string                 `protobuf:"bytes,1,opt,name=server_id,json=serverId,proto3" json:"server_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RegisterServerResponse) Reset() {
+	*x = RegisterServerResponse{}
+	mi := &file_api_proto_kms_v1_kms_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RegisterServerResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RegisterServerResponse) ProtoMessage() {}
+
+func (x *RegisterServerResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_api_proto_kms_v1_kms_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RegisterServerResponse.ProtoReflect.Descriptor instead.
+func (*RegisterServerResponse) Descriptor() ([]byte, []int) {
+	return file_api_proto_kms_v1_kms_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *RegisterServerResponse) GetServerId() string {
+	if x != nil {
+		return x.ServerId
+	}
+	return ""
+}
+
+type RegisterPermissionRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ClientId      string                 `protobuf:"bytes,1,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
+	ServerId      string                 `protobuf:"bytes,2,opt,name=server_id,json=serverId,proto3" json:"server_id,omitempty"`
+	Permission    int32                  `protobuf:"varint,3,opt,name=permission,proto3" json:"permission,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RegisterPermissionRequest) Reset() {
+	*x = RegisterPermissionRequest{}
+	mi := &file_api_proto_kms_v1_kms_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RegisterPermissionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RegisterPermissionRequest) ProtoMessage() {}
+
+func (x *RegisterPermissionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_api_proto_kms_v1_kms_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RegisterPermissionRequest.ProtoReflect.Descriptor instead.
+func (*RegisterPermissionRequest) Descriptor() ([]byte, []int) {
+	return file_api_proto_kms_v1_kms_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *RegisterPermissionRequest) GetClientId() string {
+	if x != nil {
+		return x.ClientId
+	}
+	return ""
+}
+
+func (x *RegisterPermissionRequest) GetServerId() string {
+	if x != nil {
+		return x.ServerId
+	}
+	return ""
+}
+
+func (x *RegisterPermissionRequest) GetPermission() int32 {
+	if x != nil {
+		return x.Permission
+	}
+	return 0
+}
+
+type RegisterPermissionResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RegisterPermissionResponse) Reset() {
+	*x = RegisterPermissionResponse{}
+	mi := &file_api_proto_kms_v1_kms_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RegisterPermissionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RegisterPermissionResponse) ProtoMessage() {}
+
+func (x *RegisterPermissionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_api_proto_kms_v1_kms_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RegisterPermissionResponse.ProtoReflect.Descriptor instead.
+func (*RegisterPermissionResponse) Descriptor() ([]byte, []int) {
+	return file_api_proto_kms_v1_kms_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *RegisterPermissionResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
 type GetSecretRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ClientId      string                 `protobuf:"bytes,1,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
@@ -136,7 +336,7 @@ type GetSecretRequest struct {
 
 func (x *GetSecretRequest) Reset() {
 	*x = GetSecretRequest{}
-	mi := &file_api_proto_kms_v1_kms_proto_msgTypes[2]
+	mi := &file_api_proto_kms_v1_kms_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -148,7 +348,7 @@ func (x *GetSecretRequest) String() string {
 func (*GetSecretRequest) ProtoMessage() {}
 
 func (x *GetSecretRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_proto_kms_v1_kms_proto_msgTypes[2]
+	mi := &file_api_proto_kms_v1_kms_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -161,7 +361,7 @@ func (x *GetSecretRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSecretRequest.ProtoReflect.Descriptor instead.
 func (*GetSecretRequest) Descriptor() ([]byte, []int) {
-	return file_api_proto_kms_v1_kms_proto_rawDescGZIP(), []int{2}
+	return file_api_proto_kms_v1_kms_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *GetSecretRequest) GetClientId() string {
@@ -187,7 +387,7 @@ type GetSecretResponse struct {
 
 func (x *GetSecretResponse) Reset() {
 	*x = GetSecretResponse{}
-	mi := &file_api_proto_kms_v1_kms_proto_msgTypes[3]
+	mi := &file_api_proto_kms_v1_kms_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -199,7 +399,7 @@ func (x *GetSecretResponse) String() string {
 func (*GetSecretResponse) ProtoMessage() {}
 
 func (x *GetSecretResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_api_proto_kms_v1_kms_proto_msgTypes[3]
+	mi := &file_api_proto_kms_v1_kms_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -212,7 +412,7 @@ func (x *GetSecretResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetSecretResponse.ProtoReflect.Descriptor instead.
 func (*GetSecretResponse) Descriptor() ([]byte, []int) {
-	return file_api_proto_kms_v1_kms_proto_rawDescGZIP(), []int{3}
+	return file_api_proto_kms_v1_kms_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *GetSecretResponse) GetPayload() string {
@@ -232,15 +432,30 @@ const file_api_proto_kms_v1_kms_proto_rawDesc = "" +
 	"\btls_cert\x18\x02 \x01(\tR\atlsCert\"l\n" +
 	"\x16RegisterClientResponse\x12\x1b\n" +
 	"\tclient_id\x18\x01 \x01(\tR\bclientId\x125\n" +
-	"\bvalid_to\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\avalidTo\"L\n" +
+	"\bvalid_to\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampR\avalidTo\"E\n" +
+	"\x15RegisterServerRequest\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12\x18\n" +
+	"\aaddress\x18\x02 \x01(\tR\aaddress\"5\n" +
+	"\x16RegisterServerResponse\x12\x1b\n" +
+	"\tserver_id\x18\x01 \x01(\tR\bserverId\"u\n" +
+	"\x19RegisterPermissionRequest\x12\x1b\n" +
+	"\tclient_id\x18\x01 \x01(\tR\bclientId\x12\x1b\n" +
+	"\tserver_id\x18\x02 \x01(\tR\bserverId\x12\x1e\n" +
+	"\n" +
+	"permission\x18\x03 \x01(\x05R\n" +
+	"permission\"6\n" +
+	"\x1aRegisterPermissionResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"L\n" +
 	"\x10GetSecretRequest\x12\x1b\n" +
 	"\tclient_id\x18\x01 \x01(\tR\bclientId\x12\x1b\n" +
 	"\tserver_id\x18\x02 \x01(\tR\bserverId\"-\n" +
 	"\x11GetSecretResponse\x12\x18\n" +
-	"\apayload\x18\x01 \x01(\tR\apayload2\x9f\x01\n" +
+	"\apayload\x18\x01 \x01(\tR\apayload2\xcd\x02\n" +
 	"\n" +
 	"KMSService\x12O\n" +
-	"\x0eRegisterClient\x12\x1d.kms.v1.RegisterClientRequest\x1a\x1e.kms.v1.RegisterClientResponse\x12@\n" +
+	"\x0eRegisterClient\x12\x1d.kms.v1.RegisterClientRequest\x1a\x1e.kms.v1.RegisterClientResponse\x12O\n" +
+	"\x0eRegisterServer\x12\x1d.kms.v1.RegisterServerRequest\x1a\x1e.kms.v1.RegisterServerResponse\x12[\n" +
+	"\x12RegisterPermission\x12!.kms.v1.RegisterPermissionRequest\x1a\".kms.v1.RegisterPermissionResponse\x12@\n" +
 	"\tGetSecret\x12\x18.kms.v1.GetSecretRequest\x1a\x19.kms.v1.GetSecretResponseBHZFgithub.com/RomanGolovinn/KeyManagementSystem/internal/api/kms/v1;kmsv1b\x06proto3"
 
 var (
@@ -255,22 +470,30 @@ func file_api_proto_kms_v1_kms_proto_rawDescGZIP() []byte {
 	return file_api_proto_kms_v1_kms_proto_rawDescData
 }
 
-var file_api_proto_kms_v1_kms_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_api_proto_kms_v1_kms_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_api_proto_kms_v1_kms_proto_goTypes = []any{
-	(*RegisterClientRequest)(nil),  // 0: kms.v1.RegisterClientRequest
-	(*RegisterClientResponse)(nil), // 1: kms.v1.RegisterClientResponse
-	(*GetSecretRequest)(nil),       // 2: kms.v1.GetSecretRequest
-	(*GetSecretResponse)(nil),      // 3: kms.v1.GetSecretResponse
-	(*timestamppb.Timestamp)(nil),  // 4: google.protobuf.Timestamp
+	(*RegisterClientRequest)(nil),      // 0: kms.v1.RegisterClientRequest
+	(*RegisterClientResponse)(nil),     // 1: kms.v1.RegisterClientResponse
+	(*RegisterServerRequest)(nil),      // 2: kms.v1.RegisterServerRequest
+	(*RegisterServerResponse)(nil),     // 3: kms.v1.RegisterServerResponse
+	(*RegisterPermissionRequest)(nil),  // 4: kms.v1.RegisterPermissionRequest
+	(*RegisterPermissionResponse)(nil), // 5: kms.v1.RegisterPermissionResponse
+	(*GetSecretRequest)(nil),           // 6: kms.v1.GetSecretRequest
+	(*GetSecretResponse)(nil),          // 7: kms.v1.GetSecretResponse
+	(*timestamppb.Timestamp)(nil),      // 8: google.protobuf.Timestamp
 }
 var file_api_proto_kms_v1_kms_proto_depIdxs = []int32{
-	4, // 0: kms.v1.RegisterClientResponse.valid_to:type_name -> google.protobuf.Timestamp
+	8, // 0: kms.v1.RegisterClientResponse.valid_to:type_name -> google.protobuf.Timestamp
 	0, // 1: kms.v1.KMSService.RegisterClient:input_type -> kms.v1.RegisterClientRequest
-	2, // 2: kms.v1.KMSService.GetSecret:input_type -> kms.v1.GetSecretRequest
-	1, // 3: kms.v1.KMSService.RegisterClient:output_type -> kms.v1.RegisterClientResponse
-	3, // 4: kms.v1.KMSService.GetSecret:output_type -> kms.v1.GetSecretResponse
-	3, // [3:5] is the sub-list for method output_type
-	1, // [1:3] is the sub-list for method input_type
+	2, // 2: kms.v1.KMSService.RegisterServer:input_type -> kms.v1.RegisterServerRequest
+	4, // 3: kms.v1.KMSService.RegisterPermission:input_type -> kms.v1.RegisterPermissionRequest
+	6, // 4: kms.v1.KMSService.GetSecret:input_type -> kms.v1.GetSecretRequest
+	1, // 5: kms.v1.KMSService.RegisterClient:output_type -> kms.v1.RegisterClientResponse
+	3, // 6: kms.v1.KMSService.RegisterServer:output_type -> kms.v1.RegisterServerResponse
+	5, // 7: kms.v1.KMSService.RegisterPermission:output_type -> kms.v1.RegisterPermissionResponse
+	7, // 8: kms.v1.KMSService.GetSecret:output_type -> kms.v1.GetSecretResponse
+	5, // [5:9] is the sub-list for method output_type
+	1, // [1:5] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
 	1, // [1:1] is the sub-list for extension extendee
 	0, // [0:1] is the sub-list for field type_name
@@ -287,7 +510,7 @@ func file_api_proto_kms_v1_kms_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_api_proto_kms_v1_kms_proto_rawDesc), len(file_api_proto_kms_v1_kms_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

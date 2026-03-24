@@ -8,6 +8,8 @@ import "google/protobuf/timestamp.proto";
 
 service KMSService {
   rpc RegisterClient(RegisterClientRequest) returns (RegisterClientResponse);
+  rpc RegisterServer(RegisterServerRequest) returns (RegisterServerResponse);
+  rpc RegisterPermission(RegisterPermissionRequest) returns (RegisterPermissionResponse);
   rpc GetSecret(GetSecretRequest) returns (GetSecretResponse);
 }
 
@@ -20,6 +22,27 @@ message RegisterClientResponse {
   string client_id = 1;
   google.protobuf.Timestamp valid_to = 2;
 }
+
+message RegisterServerRequest {
+  string name = 1;
+  string address = 2;
+}
+
+message RegisterServerResponse {
+  string server_id = 1;
+}
+
+
+message RegisterPermissionRequest {
+  string client_id = 1;
+  string server_id = 2;
+  int32 permission = 3;
+}
+
+message RegisterPermissionResponse {
+  bool success = 1;
+}
+  
 
 message GetSecretRequest {
   string client_id = 1;

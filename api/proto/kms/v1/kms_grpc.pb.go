@@ -19,8 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	KMSService_RegisterClient_FullMethodName = "/kms.v1.KMSService/RegisterClient"
-	KMSService_GetSecret_FullMethodName      = "/kms.v1.KMSService/GetSecret"
+	KMSService_RegisterClient_FullMethodName     = "/kms.v1.KMSService/RegisterClient"
+	KMSService_RegisterServer_FullMethodName     = "/kms.v1.KMSService/RegisterServer"
+	KMSService_RegisterPermission_FullMethodName = "/kms.v1.KMSService/RegisterPermission"
+	KMSService_GetSecret_FullMethodName          = "/kms.v1.KMSService/GetSecret"
 )
 
 // KMSServiceClient is the client API for KMSService service.
@@ -28,6 +30,8 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type KMSServiceClient interface {
 	RegisterClient(ctx context.Context, in *RegisterClientRequest, opts ...grpc.CallOption) (*RegisterClientResponse, error)
+	RegisterServer(ctx context.Context, in *RegisterServerRequest, opts ...grpc.CallOption) (*RegisterServerResponse, error)
+	RegisterPermission(ctx context.Context, in *RegisterPermissionRequest, opts ...grpc.CallOption) (*RegisterPermissionResponse, error)
 	GetSecret(ctx context.Context, in *GetSecretRequest, opts ...grpc.CallOption) (*GetSecretResponse, error)
 }
 
@@ -49,6 +53,26 @@ func (c *kMSServiceClient) RegisterClient(ctx context.Context, in *RegisterClien
 	return out, nil
 }
 
+func (c *kMSServiceClient) RegisterServer(ctx context.Context, in *RegisterServerRequest, opts ...grpc.CallOption) (*RegisterServerResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RegisterServerResponse)
+	err := c.cc.Invoke(ctx, KMSService_RegisterServer_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kMSServiceClient) RegisterPermission(ctx context.Context, in *RegisterPermissionRequest, opts ...grpc.CallOption) (*RegisterPermissionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RegisterPermissionResponse)
+	err := c.cc.Invoke(ctx, KMSService_RegisterPermission_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *kMSServiceClient) GetSecret(ctx context.Context, in *GetSecretRequest, opts ...grpc.CallOption) (*GetSecretResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetSecretResponse)
@@ -64,6 +88,8 @@ func (c *kMSServiceClient) GetSecret(ctx context.Context, in *GetSecretRequest, 
 // for forward compatibility.
 type KMSServiceServer interface {
 	RegisterClient(context.Context, *RegisterClientRequest) (*RegisterClientResponse, error)
+	RegisterServer(context.Context, *RegisterServerRequest) (*RegisterServerResponse, error)
+	RegisterPermission(context.Context, *RegisterPermissionRequest) (*RegisterPermissionResponse, error)
 	GetSecret(context.Context, *GetSecretRequest) (*GetSecretResponse, error)
 	mustEmbedUnimplementedKMSServiceServer()
 }
@@ -77,6 +103,12 @@ type UnimplementedKMSServiceServer struct{}
 
 func (UnimplementedKMSServiceServer) RegisterClient(context.Context, *RegisterClientRequest) (*RegisterClientResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method RegisterClient not implemented")
+}
+func (UnimplementedKMSServiceServer) RegisterServer(context.Context, *RegisterServerRequest) (*RegisterServerResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method RegisterServer not implemented")
+}
+func (UnimplementedKMSServiceServer) RegisterPermission(context.Context, *RegisterPermissionRequest) (*RegisterPermissionResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method RegisterPermission not implemented")
 }
 func (UnimplementedKMSServiceServer) GetSecret(context.Context, *GetSecretRequest) (*GetSecretResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetSecret not implemented")
@@ -120,6 +152,42 @@ func _KMSService_RegisterClient_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _KMSService_RegisterServer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RegisterServerRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KMSServiceServer).RegisterServer(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KMSService_RegisterServer_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KMSServiceServer).RegisterServer(ctx, req.(*RegisterServerRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _KMSService_RegisterPermission_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RegisterPermissionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KMSServiceServer).RegisterPermission(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KMSService_RegisterPermission_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KMSServiceServer).RegisterPermission(ctx, req.(*RegisterPermissionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _KMSService_GetSecret_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetSecretRequest)
 	if err := dec(in); err != nil {
@@ -148,6 +216,14 @@ var KMSService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RegisterClient",
 			Handler:    _KMSService_RegisterClient_Handler,
+		},
+		{
+			MethodName: "RegisterServer",
+			Handler:    _KMSService_RegisterServer_Handler,
+		},
+		{
+			MethodName: "RegisterPermission",
+			Handler:    _KMSService_RegisterPermission_Handler,
 		},
 		{
 			MethodName: "GetSecret",
