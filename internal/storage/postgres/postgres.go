@@ -73,7 +73,7 @@ func (p *Postgres) CreateServer(ctx context.Context, server Server) (string, err
 }
 
 func (p *Postgres) CreatePermission(ctx context.Context, permission Permission) error {
-	q := `insert into permission (client_id, server_id, permission) values ($1, $2, $3)`
+	q := `insert into permissions (client_id, server_id, permission) values ($1, $2, $3)`
 
 	_, err := p.DB.ExecContext(ctx, q, permission.ClientId, permission.ServerId,
 		permission.Permission)
