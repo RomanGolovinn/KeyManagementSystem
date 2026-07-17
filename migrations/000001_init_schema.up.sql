@@ -14,7 +14,7 @@ create table servers(
 create table permissions (
     id serial primary key,
     client_id uuid references clients(id) on delete cascade,
-    server_id uuid references server(id) on delete cascade,
+    server_id uuid references servers(id) on delete cascade,
     permission integer default 0,
     unique (client_id, server_id)
 );
