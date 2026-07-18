@@ -45,6 +45,7 @@ type IssuedCredential struct {
 	Id               string
 	ClientId         string
 	ServerId         string
+	Permission       PermissionType
 	TempUsername     string
 	TempPasswordHash string
 	CreatedAt        time.Time
